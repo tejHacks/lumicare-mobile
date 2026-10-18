@@ -1,0 +1,7 @@
+# Python-only conversion environment; do not install these packages in the React Native app.
+# Tested for model export in Python 3.14 on Windows.
+ultralytics==8.4.177
+onnx==1.23.2
+onnxruntime==1.31.0
+joblib==1.5.3
+scikit-learn==1.9.0

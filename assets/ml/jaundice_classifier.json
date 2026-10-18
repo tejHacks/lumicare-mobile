@@ -1,0 +1,22 @@
+{
+  "source": "files/jaundice_predicter.pkl",
+  "estimator": "sklearn.svm.SVC",
+  "kernel": "linear",
+  "classes": [
+    0,
+    1
+  ],
+  "coef": -6.583670947759719,
+  "intercept": 1.0481732022544166,
+  "decisionRule": "class 1 iff coef * jaundiceIndex + intercept >= 0; otherwise class 0",
+  "positiveClassThreshold": 0.15920801792366115,
+  "classLabels": {
+    "0": "Jaundice",
+    "1": "NO-Jaundice"
+  },
+  "feature": "jaundiceIndex",
+  "featureRange": [
+    0,
+    1
+  ]
+}

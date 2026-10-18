@@ -1,0 +1,10 @@
+flask
+flask-cors
+numpy
+opencv-python
+ultralytics
+scikit-learn
+torch
+matplotlib
+joblib
+gunicorn # Add Gunicorn for production server

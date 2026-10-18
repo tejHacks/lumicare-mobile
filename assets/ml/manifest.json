@@ -1,0 +1,56 @@
+{
+  "formatVersion": 1,
+  "status": "conversion-verified; mobile image parity still requires device validation",
+  "yolo": {
+    "source": "files/sclera_detector.pt",
+    "file": "sclera_detector.onnx",
+    "task": "segment",
+    "classNames": {
+      "0": "iris",
+      "1": "sclera"
+    },
+    "imageSize": 640,
+    "input": {
+      "name": "images",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "type": "tensor(float)"
+    },
+    "outputs": [
+      {
+        "name": "output0",
+        "shape": [
+          1,
+          300,
+          38
+        ],
+        "type": "tensor(float)"
+      },
+      {
+        "name": "output1",
+        "shape": [
+          1,
+          32,
+          160,
+          160
+        ],
+        "type": "tensor(float)"
+      }
+    ],
+    "nmsEmbedded": true,
+    "onnxOpset": 17
+  },
+  "classifier": {
+    "file": "jaundice_classifier.json",
+    "estimator": "sklearn.svm.SVC",
+    "positiveClassThreshold": 0.15920801792366115,
+    "classLabels": {
+      "0": "Jaundice",
+      "1": "NO-Jaundice"
+    }
+  }
+}
