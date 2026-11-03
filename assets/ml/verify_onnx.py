@@ -38,3 +38,4 @@ for path in SAMPLES:
         f"{path.name}: detections={len(pt.boxes)}, box_max_abs_delta={box_delta}, "
         f"confidence_max_abs_delta={conf_delta}, aggregate_mask_iou={mask_iou}"
     )
+ 

@@ -325,7 +325,7 @@ export default function ScanScreen() {
       console.error("[LumiCare scan] Model analysis failed", error);
       Alert.alert(
         "On-device model unavailable",
-        `The photo could not be analyzed. Expo Go does not include ONNX Runtime; install and open a LumiCare development build to run the model.\n\n${errorDetails(error)}`,
+        `The photo could not be analyzed by this app build. Check that the production build includes the ONNX Runtime native module and bundled model.\n\n${errorDetails(error)}`,
       );
       setStage("preview");
     }

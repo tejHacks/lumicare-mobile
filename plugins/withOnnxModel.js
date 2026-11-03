@@ -5,6 +5,20 @@ const { createRunOncePlugin, withGradleProperties, withDangerousMod, withXcodePr
 const PLUGIN_NAME = "lumicare-onnx-model";
 const MODEL_DESTINATION_NAME = "sclera_detector.onnx";
 
+function withOnnxRuntimeGradle(config) {
+  const dependency = "    implementation project(':onnxruntime-react-native')";
+  config = require("expo/config-plugins").withAppBuildGradle(config, (modConfig) => {
+    if (!modConfig.modResults.contents.includes(dependency)) {
+      modConfig.modResults.contents = modConfig.modResults.contents.replace(
+        /dependencies\s*\{/,
+        (match) => `${match}\n${dependency}`,
+      );
+    }
+    return modConfig;
+  });
+  return require("onnxruntime-react-native/app.plugin.js").default(config);
+}
+
 function withAndroidModel(config, modelPath) {
   if (process.env.EXPO_PUBLIC_ENABLE_LOCAL_MODEL === "true") {
     config = withGradleProperties(config, (modConfig) => {
@@ -24,6 +38,7 @@ function withAndroidModel(config, modelPath) {
       return modConfig;
     });
   }
+  config = withOnnxRuntimeGradle(config);
   config = withSettingsGradle(config, (modConfig) => {
     const includeLine = "include ':onnxruntime-react-native'";
     const projectLine = "project(':onnxruntime-react-native').projectDir = new File(settingsDir, '../node_modules/onnxruntime-react-native/android')";
